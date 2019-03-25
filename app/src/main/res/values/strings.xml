@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">WorkManagerDemo</string>
+    <string name="start_download_work">Download file workmanager</string>
+    <string name="work_done">Work is done !!</string>
+    <string name="cancel_work">Download periodic interval</string>
+    <string name="download_runing">Download Runing</string>
+    <string name="periodic_task">Periodic task start</string>
+    <string name="work_start">Work Start</string>
+</resources>
