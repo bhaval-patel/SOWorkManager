@@ -5,7 +5,6 @@ import android.content.Context
 import androidx.work.ListenableWorker
 import androidx.work.Worker
 import androidx.work.WorkerParameters
-import com.spaceo.workmanager.utility.PATHFILE
 import com.spaceo.workmanager.utility.URLFILE
 import java.io.BufferedInputStream
 import java.io.FileOutputStream
@@ -14,6 +13,11 @@ import java.net.URL
 
 class DownLoadFIleWorkManager(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
 
+    /**
+     * Workmanager worker thread which do processing
+     * in background, so it will not impact to main thread or UI
+     *
+     */
     override fun doWork(): ListenableWorker.Result {
         try {
             val url = URL(URLFILE)
@@ -25,7 +29,7 @@ class DownLoadFIleWorkManager(context: Context, workerParams: WorkerParameters) 
             val input = BufferedInputStream(url.openStream(), 8192)
 
             // Output stream to write file
-            val output = FileOutputStream(PATHFILE)
+            val output = FileOutputStream("/sdcard/myfile_${System.currentTimeMillis()}.mp4")
 
             val data = ByteArray(1024)
 
