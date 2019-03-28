@@ -17,7 +17,7 @@
     <string name="app_name">WorkManagerDemo</string>
     <string name="start_download_work">Start download One time</string>
     <string name="work_done">Work is done !!</string>
-    <string name="cancel_work">Start download on\nperiodic interval of 2 min</string>
+    <string name="cancel_work">Start download on\nperiodic interval of 15 min</string>
     <string name="download_runing">Download Running</string>
     <string name="periodic_task">Periodic task start</string>
     <string name="work_start">Work Start</string>
