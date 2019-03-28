@@ -26,7 +26,7 @@ import java.io.FileOutputStream
 import java.net.URL
 
 
-class DownLoadFIleWorkManager(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
+class DownLoadFileWorkManager(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
 
     /**
      * Workmanager worker thread which do processing

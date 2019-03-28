@@ -25,7 +25,8 @@ import androidx.work.*
 import com.spaceo.workmanager.utility.PERIODIC_INTERVAL
 import com.spaceo.workmanager.utility.PERMISION_REQUEST
 import com.spaceo.workmanager.utility.RunTimePermission
-import com.spaceo.workmanager.workmanager.DownLoadFIleWorkManager
+
+import com.spaceo.workmanager.workmanager.DownLoadFileWorkManager
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.concurrent.TimeUnit
 
@@ -94,10 +95,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun StartOneTimeWorkManager() {
 
         val constraints = androidx.work.Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
-        val task = OneTimeWorkRequest.Builder(DownLoadFIleWorkManager::class.java).setConstraints(constraints).build()
+        val task = OneTimeWorkRequest.Builder(DownLoadFileWorkManager::class.java).setConstraints(constraints).build()
         workManager.enqueue(task)
 
-        //
         workManager.getWorkInfoByIdLiveData(task.id)
             .observe(this@MainActivity, Observer {
                 it?.let {
@@ -119,7 +119,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private fun StartPeriodicWorkManager() {
         loaderShow(true)
         val periodicWorkRequest = PeriodicWorkRequest.Builder(
-            DownLoadFIleWorkManager::class.java,
+            DownLoadFileWorkManager::class.java,
             PERIODIC_INTERVAL,
             TimeUnit.MINUTES
         ).setConstraints(
