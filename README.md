@@ -3,7 +3,7 @@
 SoWorkManager
 =============
 
-WorkManager is a library used to enqueue deferrable work that is guaranteed to execute sometime after its Constraints are met. WorkManager allows observation of work status and the ability to create complex chains of work. You can read about [Constraints builder ](https://developer.android.com/reference/androidx/work/Constraints.Builder). Workmanager runs in the background you can get the status update using LiveData.
+WorkManager is a library used to enqueue deferrable work that is guaranteed to execute sometime after its Constraints are met. WorkManager allows observation of work status and the ability to create complex chains of work. You can read about [Constraints builder](https://developer.android.com/reference/androidx/work/Constraints.Builder). Workmanager runs in the background you can get the status update using LiveData.
 
 WorkManager Execution scenarios:
 1) When App in Foreground
