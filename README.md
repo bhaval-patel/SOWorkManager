@@ -3,7 +3,7 @@
 SoWorkManager
 =============
 
-WorkManager is a library used to enqueue deferrable work that is guaranteed to execute sometime after its Constraints are met. WorkManager allows observation of work status and the ability to create complex chains of work. You can read about [!Constraints builder ](https://developer.android.com/reference/androidx/work/Constraints.Builder)
+WorkManager is a library used to enqueue deferrable work that is guaranteed to execute sometime after its Constraints are met. WorkManager allows observation of work status and the ability to create complex chains of work. You can read about [Constraints builder ](https://developer.android.com/reference/androidx/work/Constraints.Builder)
 
 Why Work manager ?
 Perform any work one time,periodic and enqueue with guarantee of execution.
