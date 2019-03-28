@@ -3,42 +3,42 @@
 SoWorkManager
 =============
 
-WorkManager is a library used to enqueue deferrable work that is guaranteed to execute sometime after its Constraints are met. WorkManager allows observation of work status and the ability to create complex chains of work. You can read about [Constraints builder ](https://developer.android.com/reference/androidx/work/Constraints.Builder). Workmanager run in background you can get status update using LiveData.
+WorkManager is a library used to enqueue deferrable work that is guaranteed to execute sometime after its Constraints are met. WorkManager allows observation of work status and the ability to create complex chains of work. You can read about [Constraints builder ](https://developer.android.com/reference/androidx/work/Constraints.Builder). Workmanager runs in the background you can get the status update using LiveData.
 
-WorkManager Execution senarios:
-1) When App in Forgound
-2) When App in recent list
-3) If app kill then workmanager run task when app open again.
+WorkManager Execution scenarios:
+1) When App in Foreground
+2) When App in the recent list
+3) If the app kills then work manager run task when app open again.
 
-Do not forgot workmanager work with constrains, when specified contstrain met it will run tasks in above senarios.
+Do not forget work manager work with constraints, when specified constraint met it will run tasks in the above scenarios.
 
-We have developed demo where we are downloading files & store it in sdcard. Workmanager help to download in backgroud as well as when Network contrain met. Workmanager have 2 options
+We have developed a demo where we are downloading files & store it in sd card. Workmanager help to download in the background as well as when Network constraint met. Workmanager have 2 options
 
-- One time execution : It will run only one time
-- Periodic execution : It will run periodically when constrain met for task.
+- One time execution: It will run only one time
+- Periodic execution: It will run periodically when constraint met for the task.
 
-Here you can find steps to intigrate workmanager in your project.
+Here you can find steps to integrate work manager in your project.
 
 STEP 1
-Add dependaciy in application module gradle file (build.gradle)
+Add dependency in application module Gradle file (build.gradle)
 ```
     implementation "androidx.work:work-runtime:2.0.0-rc01"
 ```
 
 STEP 2
-Create workmanager instance in onCreate() of activity
+Create a work manager instance in onCreate() of activity
 ```
     val workManager = WorkManager.getInstance()
 ```
 
 STEP 3
-Create workmanager class extends with Worker
+Create a work manager class extends with Worker
 ```
     class DownLoadFileWorkManager(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
         override fun doWork(): Result {
-            //TODO perform your asyc oprational task here
+            //TODO perform your async operational task here
             /**
-             * We have perform download task here on above example
+             * We have performed download task here on above example
              */
     
             return Result.success()
@@ -63,7 +63,7 @@ Set Constraints & start(enqueue) workmanager task
 ```
 
 STEP 5
-Get status of One time or PeriodicWork Request task status.
+Get status of One time or periodic work Request task status.
 ```
     workManager.getWorkInfoByIdLiveData(task.id)
         .observe(this@MainActivity, Observer {
