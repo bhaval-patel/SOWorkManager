@@ -8,11 +8,11 @@ WorkManager is a library used to enqueue deferrable work that is guaranteed to e
 WorkManager Execution scenarios:
 1) When App in Foreground
 2) When App in the recent list
-3) If the app kills then work manager run task when app open again.
+3) If the app kills then WorkManager run task when app open again.
 
-Do not forget work manager work with constraints, when specified constraint met it will run tasks in the above scenarios.
+Do not forget that WorkManager work with constraints, when specified constraint met it will run tasks in the above scenarios.
 
-We have developed a demo where we are downloading files & store it in sd card. Workmanager help to download in the background as well as when Network constraint met. Workmanager have 2 options
+We have developed a demo where we are downloading files & store it in sdCard. Workmanager help to download in the background as well as when Network constraint met. Workmanager have 2 options
 
 - One time execution: It will run only one time
 - Periodic execution: It will run periodically when constraint met for the task.
