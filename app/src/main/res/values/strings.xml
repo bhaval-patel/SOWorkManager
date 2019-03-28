@@ -21,7 +21,6 @@
     <string name="download_runing">Download Running</string>
     <string name="periodic_task">Periodic task start</string>
     <string name="work_start">Work Start</string>
-    <string name="msg">When Internet connection enabled or when internet is available schedule task(Downloading file) will start
-        running.
+    <string name="msg">When Internet connection enabled or when the internet is available to schedule task(Downloading file) will start running.
     </string>
 </resources>
