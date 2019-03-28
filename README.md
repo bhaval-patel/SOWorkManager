@@ -79,6 +79,7 @@ Get status of One time or PeriodicWork Request task status.
 ```
 
 
-
+![alt text](https://github.com/spaceotech/SOWorkManager/blob/master/screens/demo.gif)
 ![alt text](https://github.com/spaceotech/SOWorkManager/blob/master/screens/device_screenshot.png)
+
 
