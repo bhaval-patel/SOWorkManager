@@ -22,37 +22,37 @@ Here you can find steps to intigrate workmanager in your project.
 STEP 1
 Add dependaciy in application module gradle file (build.gradle)
 ```
-implementation "androidx.work:work-runtime:2.0.0-rc01"
+    implementation "androidx.work:work-runtime:2.0.0-rc01"
 ```
 
 STEP 2
 Create workmanager instance in onCreate() of activity
 ```
-  val workManager = WorkManager.getInstance()
+    val workManager = WorkManager.getInstance()
 ```
 
 STEP 3
 Create workmanager class extends with Worker
 ```
-class DownLoadFileWorkManager(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
-    override fun doWork(): Result {
-        //TODO perform your asyc oprational task here
-        /**
-         * We have perform download task here on above example
-         */
-
-        return Result.success()
+    class DownLoadFileWorkManager(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
+        override fun doWork(): Result {
+            //TODO perform your asyc oprational task here
+            /**
+             * We have perform download task here on above example
+             */
+    
+            return Result.success()
+        }
     }
-}
 ```
 
 STEP 4 
 Set Constraints & start(enqueue) workmanager task
   a) One Time task enqueue
 ```
-val constraints = androidx.work.Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
-val task = OneTimeWorkRequest.Builder(DownLoadFileWorkManager::class.java).setConstraints(constraints).build()
-workManager.enqueue(task)
+    val constraints = androidx.work.Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
+    val task = OneTimeWorkRequest.Builder(DownLoadFileWorkManager::class.java).setConstraints(constraints).build()
+    workManager.enqueue(task)
 ```
   b)Periodic task enqueue, Recommended periodic work interval minimum time is 900000 seconds or in other words 15 minutes
 ```
@@ -65,17 +65,17 @@ workManager.enqueue(task)
 STEP 5
 Get status of One time or PeriodicWork Request task status.
 ```
-        workManager.getWorkInfoByIdLiveData(task.id)
-            .observe(this@MainActivity, Observer {
-                it?.let {
+    workManager.getWorkInfoByIdLiveData(task.id)
+        .observe(this@MainActivity, Observer {
+            it?.let {
 
-                    if (it.state == WorkInfo.State.RUNNING) {
-                        //task running, you can update UI
-                    }else if (it.state.isFinished) {
-                        // task finished you can notify to Views
-                    }
+                if (it.state == WorkInfo.State.RUNNING) {
+                    //task running, you can update UI
+                }else if (it.state.isFinished) {
+                    // task finished you can notify to Views
                 }
-            })
+            }
+        })
 ```
 
 
