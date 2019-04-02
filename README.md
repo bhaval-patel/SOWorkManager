@@ -21,19 +21,21 @@ Here you can find steps to integrate WorkManager in your project.
 
 STEP 1
 Add dependency in application module Gradle file (build.gradle)
-```
+```gradle
+dependencies {
     implementation "androidx.work:work-runtime:2.0.0-rc01"
+}
 ```
 
 STEP 2
 Create a work manager instance in onCreate() of activity
-```
+```kotlin
     val workManager = WorkManager.getInstance()
 ```
 
 STEP 3
 Create a work manager class extends with Worker
-```
+```kotlin
     class DownLoadFileWorkManager(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
         override fun doWork(): Result {
             //TODO perform your async operational task here
@@ -49,13 +51,13 @@ Create a work manager class extends with Worker
 STEP 4 
 Set Constraints & start(enqueue) WorkManager task
   a) One Time task enqueue
-```
+```kotlin
     val constraints = androidx.work.Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
     val task = OneTimeWorkRequest.Builder(DownLoadFileWorkManager::class.java).setConstraints(constraints).build()
     workManager.enqueue(task)
 ```
   b)Periodic task enqueue, Recommended periodic work interval minimum time is 900000 seconds or in other words 15 minutes
-```
+```kotlin
      val periodicWorkRequest = PeriodicWorkRequest.Builder(DownLoadFileWorkManager::class.java, PERIODIC_INTERVAL, TimeUnit.MINUTES)
             .setConstraints(Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build())
             .build()
@@ -64,7 +66,7 @@ Set Constraints & start(enqueue) WorkManager task
 
 STEP 5
 Get status of One time or periodic work Request task status.
-```
+```kotlin
     workManager.getWorkInfoByIdLiveData(task.id)
         .observe(this@MainActivity, Observer {
             it?.let {
