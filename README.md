@@ -1,23 +1,23 @@
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 
-SoWorkManager
+WorkManager
 =============
 
-WorkManager is a library used to enqueue deferrable work that is guaranteed to execute sometime after its Constraints are met. WorkManager allows observation of work status and the ability to create complex chains of work. You can read about [Constraints builder](https://developer.android.com/reference/androidx/work/Constraints.Builder). Workmanager runs in the background you can get the status update using LiveData.
+WorkManager is a library used to enqueue deferrable work that is guaranteed to execute sometime after its Constraints are met. WorkManager allows observation of work status and the ability to create complex chains of work. You can read about [Constraints builder](https://developer.android.com/reference/androidx/work/Constraints.Builder). WorkManager runs in the background you can get the status update using LiveData.
 
 WorkManager Execution scenarios:
 1) When App in Foreground
 2) When App in the recent list
-3) If the app kills then WorkManager run task when app open again.
+3) If the app kills then WorkManager run pending tasks when app open again.
 
 Do not forget that WorkManager work with constraints, when specified constraint met it will run tasks in the above scenarios.
 
-We have developed a demo where we are downloading files & store it in sdCard. Workmanager help to download in the background as well as when Network constraint met. Workmanager have 2 options
+We have developed a demo where we are downloading files & store it in sdCard. WorkManager help to download in the background as well as when Network constraint met. WorkManager have 2 options
 
 - One time execution: It will run only one time
 - Periodic execution: It will run periodically when constraint met for the task.
 
-Here you can find steps to integrate work manager in your project.
+Here you can find steps to integrate WorkManager in your project.
 
 STEP 1
 Add dependency in application module Gradle file (build.gradle)
@@ -47,7 +47,7 @@ Create a work manager class extends with Worker
 ```
 
 STEP 4 
-Set Constraints & start(enqueue) workmanager task
+Set Constraints & start(enqueue) WorkManager task
   a) One Time task enqueue
 ```
     val constraints = androidx.work.Constraints.Builder().setRequiredNetworkType(NetworkType.CONNECTED).build()
