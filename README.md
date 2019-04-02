@@ -5,12 +5,12 @@ WorkManager
 
 WorkManager is a library used to enqueue deferrable work that is guaranteed to execute sometime after its Constraints are met. WorkManager allows observation of work status and the ability to create complex chains of work. You can read about [Constraints builder](https://developer.android.com/reference/androidx/work/Constraints.Builder). WorkManager runs in the background you can get the status update using LiveData.
 
-WorkManager Execution scenarios:
+## WorkManager Execution scenarios:
 1) When App in Foreground
 2) When App in the recent list
 3) If the app kills then WorkManager run pending tasks when app open again.
 
-Do not forget that WorkManager work with constraints, when specified constraint met it will run tasks in the above scenarios.
+## Do not forget that WorkManager work with constraints, when specified constraint met it will run tasks in the above scenarios.
 
 We have developed a demo where we are downloading files & store it in sdCard. WorkManager help to download in the background as well as when Network constraint met. WorkManager have 2 options
 
@@ -19,7 +19,7 @@ We have developed a demo where we are downloading files & store it in sdCard. Wo
 
 Here you can find steps to integrate WorkManager in your project.
 
-STEP 1
+# STEP 1
 Add dependency in application module Gradle file (build.gradle)
 ```gradle
 dependencies {
@@ -27,13 +27,13 @@ dependencies {
 }
 ```
 
-STEP 2
+# STEP 2
 Create a work manager instance in onCreate() of activity
 ```kotlin
     val workManager = WorkManager.getInstance()
 ```
 
-STEP 3
+# STEP 3
 Create a work manager class extends with Worker
 ```kotlin
     class DownLoadFileWorkManager(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
@@ -48,7 +48,7 @@ Create a work manager class extends with Worker
     }
 ```
 
-STEP 4 
+# STEP 4 
 Set Constraints & start(enqueue) WorkManager task
   a) One Time task enqueue
 ```kotlin
@@ -64,7 +64,7 @@ Set Constraints & start(enqueue) WorkManager task
         workManager.enqueue(periodicWorkRequest)
 ```
 
-STEP 5
+# STEP 5
 Get status of One time or periodic work Request task status.
 ```kotlin
     workManager.getWorkInfoByIdLiveData(task.id)
